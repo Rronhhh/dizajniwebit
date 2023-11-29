@@ -454,19 +454,41 @@ nav li a.loginregister {
 
 .ProductsSection {
   padding: 80px 0;
+  text-align: center;
 }
 
 .ProductsSection h1 {
   text-align: center;
   margin-bottom: 75px;
   font-size: 35px;
+
 }
 
 .ProductsSection h1 span {
   color: #e44d26;
 }
 
+.show-all-button {
+  /* background-color: orange; */
+  border: 20px solid #000;
+  color: white;
+  border: 2px solid #e44d26;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-top: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+  margin-top: 75px;
+  color: #e44d26;
+  font-weight: bold;
+}
 
+.show-all-button:hover {
+  background-color: rgb(177, 177, 177);
+}
 .TeamSection {
   padding: 80px 0;
   /* max-width: 1348px; */
@@ -494,6 +516,27 @@ margin: 0 auto;
   width: 45%;
 }
 
+@media (max-width: 500px) {
+  .team h1 {
+    color: #007580 !important;
+    font-size: 25px;
+    /* text-align: center; */
+  }
+  .team p {
+    font-size: 16px;
+    /* text-align: center; */
+    
+  }
+  .team {
+    margin: 0 25px;
+  }
+  .ProductsSection h1 {
+    margin: 0 25px;
+    font-size: 30px;
+    margin-bottom: 50px;
+    
+  }
+}
 
 .footer-distributed{
 	background: #575757;
@@ -527,7 +570,7 @@ margin: 0 auto;
 }
 
 .footer-distributed h3 span{
-	color:  lightseagreen;
+	color:  #e44d26;
 }
 
 /* Footer links */
@@ -593,7 +636,7 @@ margin: 0 auto;
 }
 
 .footer-distributed .footer-center p a{
-	color:  lightseagreen;
+	color:  #e44d26;
 	text-decoration: none;;
 }
 
