@@ -11,7 +11,6 @@
   </head>
   <body>
     <nav>
-        
       <div class="menu-icon">
         <span class="fas fa-bars"></span>
       </div>
@@ -22,7 +21,11 @@
         <!-- <li><a href="#">Blogs</a></li> -->
         <li><a href="#">Contact</a></li>
         <!-- <li><a href="#">Feedback</a></li> -->
-        <li><a href="register.html" class="loginregister">Login/Register</a></li>
+        <li>
+          <a href="./loginRegister.html" class="loginregister"
+            >Login/Register</a
+          >
+        </li>
       </div>
       <div class="search-icon">
         <span class="fas fa-search"></span>
@@ -30,7 +33,6 @@
       <div class="cancel-icon">
         <span class="fas fa-times"></span>
       </div>
-    
     </nav>
     <section class="FirstSection">
       <div class="BannerContainer">
@@ -46,51 +48,66 @@
       </div>
     </section>
     <section class="ProductsSection">
-        <h1>Our on <span>sale</span> products</h1>
-        <div class="products">
-          <div class="product-card">
-            <img class="product-image" src="assets/headphones1.webp"Product 1">
-            <div class="product-details">
-              <h3 class="product-title">Stylish Headphones</h3>
-              <p class="product-price">$99.99</p>
-              <button class="buy-button">Buy Now</button>
-            </div>
-          </div>
-  
-          <div class="product-card">
-            <img class="product-image" src="assets/iphone15.webp" alt="Product 2" />
-            <div class="product-details">
-              <h3 class="product-title">Iphone 15 pro</h3>
-              <p class="product-price">$999</p>
-              <button class="buy-button">Buy Now</button>
-            </div>
-          </div>
-  
-          <div class="product-card">
-            <img class="product-image" src="assets/smartwatch1.webp" alt="Product 3" />
-            <div class="product-details">
-              <h3 class="product-title">Fashionable Smartwatch</h3>
-              <p class="product-price">$149.99</p>
-              <button class="buy-button">Buy Now</button>
-            </div>
+      <h1>Our on <span>sale</span> products</h1>
+      <div class="products">
+        <div class="product-card">
+          <img class="product-image" src="assets/headphones1.webp"Product 1">
+          <div class="product-details">
+            <h3 class="product-title">Stylish Headphones</h3>
+            <p class="product-price">$99.99</p>
+            <button class="buy-button">Buy Now</button>
           </div>
         </div>
-        <button class="show-all-button" onclick="window.location.href='products.html'">Show All Products</button>
-      </section>
-      <section class="TeamSection">
-        <div class="team">
-          <img src="assets/team.webp" />
-          <div>
-            <p>About us</p>
-            <h1>MobileShop STORY</h1>
-            <p>
-              Mollyjogger™ is an authentic American heritage brand, based in the <br>
-              Ozark Mountains, celebrating the region’s unique history of outdoor <br>
-              recreation, sporting and folklore.
-            </p>
+
+        <div class="product-card">
+          <img
+            class="product-image"
+            src="assets/iphone15.webp"
+            alt="Product 2"
+          />
+          <div class="product-details">
+            <h3 class="product-title">Iphone 15 pro</h3>
+            <p class="product-price">$999</p>
+            <button class="buy-button">Buy Now</button>
           </div>
         </div>
-      </section>
+
+        <div class="product-card">
+          <img
+            class="product-image"
+            src="assets/smartwatch1.webp"
+            alt="Product 3"
+          />
+          <div class="product-details">
+            <h3 class="product-title">Fashionable Smartwatch</h3>
+            <p class="product-price">$149.99</p>
+            <button class="buy-button">Buy Now</button>
+          </div>
+        </div>
+      </div>
+      <button
+        class="show-all-button"
+        onclick="window.location.href='products.html'"
+      >
+        Show All Products
+      </button>
+    </section>
+    <section class="TeamSection">
+      <div class="team">
+        <img src="assets/team.webp" />
+        <div>
+          <p>About us</p>
+          <h1>MobileShop STORY</h1>
+          <p>
+            Mollyjogger™ is an authentic American heritage brand, based in the
+            <br />
+            Ozark Mountains, celebrating the region’s unique history of outdoor
+            <br />
+            recreation, sporting and folklore.
+          </p>
+        </div>
+      </div>
+    </section>
     <section class="SecondSection">
       <div class="HomeCards">
         <a href="#">
@@ -140,72 +157,65 @@
         </a>
       </div>
     </section>
-    
-    
+
     <section class="FooterSection">
-        <footer class="footer-distributed">
-            <div class="footer-centered">
-			<div class="footer-left">
+      <footer class="footer-distributed">
+        <div class="footer-centered">
+          <div class="footer-left">
+            <h3>Mobile<span>Shop</span></h3>
 
-				<h3>Mobile<span>Shop</span></h3>
+            <p class="footer-links">
+              <a href="#" class="link-1">Home</a>
 
-				<p class="footer-links">
-					<a href="#" class="link-1">Home</a>
-					
-					<a href="#">Blog</a>
-				
-					<a href="#">Pricing</a>
-				
-					<a href="#">About</a>
-					
-					<a href="#">Faq</a>
-					
-					<a href="#">Contact</a>
-				</p>
+              <a href="#">Blog</a>
 
-				<p class="footer-company-name">Company Name © 2015</p>
-			</div>
+              <a href="#">Pricing</a>
 
-			<div class="footer-center">
+              <a href="#">About</a>
 
-				<div>
-					<i class="fa fa-map-marker"></i>
-					<p><span>444 S. Cedros Ave</span> Solana Beach, California</p>
-				</div>
+              <a href="#">Faq</a>
 
-				<div>
-					<i class="fa fa-phone"></i>
-					<p>+1.555.555.5555</p>
-				</div>
+              <a href="#">Contact</a>
+            </p>
 
-				<div>
-					<i class="fa fa-envelope"></i>
-					<p><a href="mailto:support@company.com">support@company.com</a></p>
-				</div>
+            <p class="footer-company-name">Company Name © 2015</p>
+          </div>
 
-			</div>
+          <div class="footer-center">
+            <div>
+              <i class="fa fa-map-marker"></i>
+              <p><span>444 S. Cedros Ave</span> Solana Beach, California</p>
+            </div>
 
-			<div class="footer-right">
+            <div>
+              <i class="fa fa-phone"></i>
+              <p>+1.555.555.5555</p>
+            </div>
 
-				<p class="footer-company-about">
-					<span>About the company</span>
-					Lorem ipsum dolor sit amet, consectateur adispicing elit. Fusce euismod convallis velit, eu auctor lacus vehicula sit amet.
-				</p>
+            <div>
+              <i class="fa fa-envelope"></i>
+              <p>
+                <a href="mailto:support@company.com">support@company.com</a>
+              </p>
+            </div>
+          </div>
 
-				<div class="footer-icons">
+          <div class="footer-right">
+            <p class="footer-company-about">
+              <span>About the company</span>
+              Lorem ipsum dolor sit amet, consectateur adispicing elit. Fusce
+              euismod convallis velit, eu auctor lacus vehicula sit amet.
+            </p>
 
-					<!-- <a href="#"><i class="fa fa-facebook"></i></a>
+            <div class="footer-icons">
+              <!-- <a href="#"><i class="fa fa-facebook"></i></a>
 					<a href="#"><i class="fa fa-twitter"></i></a>
 					<a href="#"><i class="fa fa-linkedin"></i></a>
 					<a href="#"><i class="fa fa-github"></i></a> -->
-
-				</div>
-
-			</div>
+            </div>
+          </div>
         </div>
-		</footer>
-          
-          
+      </footer>
     </section>
     <script>
       const menuBtn = document.querySelector(".menu-icon span");
