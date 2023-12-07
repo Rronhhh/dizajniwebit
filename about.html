@@ -15,35 +15,6 @@
         font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
       }
 
-      /* Navigation styles */
-      nav {
-        background-color: #333;
-        color: white;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 15px 20px;
-      }
-
-      .nav-items {
-        list-style: none;
-        display: flex;
-      }
-
-      .nav-items li {
-        margin-right: 20px;
-      }
-
-      .logo {
-        font-size: 1.5rem;
-        font-weight: bold;
-      }
-
-      .logo a {
-        text-decoration: none;
-        color: inherit;
-      }
-
       /* About Section styles */
       .about-section {
         padding: 40px;
@@ -56,7 +27,11 @@
         margin: 0 auto;
         color: #555;
       }
-
+      .team-photo {
+        width: 1200px;
+        height: 400px;
+        margin: 20px 0; /* Adjust margin as needed */
+      }
       /* Reviews Section styles */
       .reviews-section {
         background-color: #f9f9f9;
@@ -101,8 +76,9 @@
       .next {
         cursor: pointer;
         position: absolute;
-        transform: translateY(20%);
-       
+        margin-top: 100px;
+
+        margin-bottom: 100px;
         width: 50px;
         padding: 16px;
         color: #fff;
@@ -134,149 +110,40 @@
           opacity: 1;
         }
       }
-
-      /* Footer styles */
-      .FooterSection {
-        background-color: #333;
-        color: #fff;
-        padding: 20px 0; 
-        text-align: center;
-      }
-
-      .footer-links a {
-        color: #fff;
-        margin: 0 10px;
-        text-decoration: none;
-      }
-      body {
-        margin: 0;
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      }
-
-      /* Navigation styles */
-      nav {
-        background-color: #171c24;
-        color: white;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 15px 20px;
-      }
-
-      .nav-items {
-        list-style: none;
-        display: flex;
-      }
-
-      .nav-items li {
-        margin-right: 20px;
-      }
-
-      .logo {
-        font-size: 1.5rem;
-        font-weight: bold;
-      }
-
-      .logo a {
-        text-decoration: none;
-        color: inherit;
-      }
-
-      /* About Section styles */
-      .about-section {
-        padding: 40px;
-        text-align: center;
-        background-color: #f9f9f9;
-      }
-
-      .about-text {
-        max-width: 800px;
-        margin: 0 auto;
-        color: #555;
-      }
-
-      /* Reviews Section styles */
-      .reviews-section {
-        background-color: #f9f9f9;
-        padding: 40px;
-        text-align: center;
-      }
-
-      .review-container {
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        margin-top: 20px;
-      }
-
-      .review-card {
-        background-color: #fff;
-        padding: 20px;
-        border-radius: 10px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        max-width: 300px;
-        text-align: left;
-        display: none;
-        animation: fadeIn 1s ease-in-out;
-      }
-
-      .review-card p {
-        font-style: italic;
-        color: #555;
-      }
-
-      .review-card h3 {
-        margin-top: 0;
-        color: #333;
-      }
-
-      .slide {
-        display: none;
-      }
-
-      /* Animation */
-      @keyframes fadeIn {
-        from {
-          opacity: 0;
-        }
-
-        to {
-          opacity: 1;
-        }
-      }
-
-      /* Footer styles */
-      .FooterSection {
-        background-color: #333;
-        color: #fff;
-        padding: 20px 0;
-        text-align: center;
-      }
-
-      .footer-links a {
-        color: #fff;
-        margin: 0 10px;
-        text-decoration: none;
-      }
     </style>
   </head>
 
   <body>
     <!-- Navigation -->
     <nav>
-      <div class="logo"><a href="#">CodingNepal</a></div>
+      <div class="menu-icon">
+        <span class="fas fa-bars"></span>
+      </div>
+      <div class="logo">CodingNepal</div>
       <div class="nav-items">
         <li><a href="./home.html">Home</a></li>
         <li><a href="./about.html">About</a></li>
-        <li><a href="#">Contact</a></li>
-        <li><a href="./loginRegister.html">Login/Register</a></li>
+        <!-- <li><a href="#">Blogs</a></li> -->
+        <li><a href="./contactUs.html">Contact</a></li>
+        <!-- <li><a href="#">Feedback</a></li> -->
+        <li>
+          <a href="./loginRegister.html" class="loginregister"
+            >Login/Register</a
+          >
+        </li>
+      </div>
+      <div class="search-icon">
+        <span class="fas fa-search"></span>
+      </div>
+      <div class="cancel-icon">
+        <span class="fas fa-times"></span>
       </div>
     </nav>
 
     <!-- About Section -->
     <section class="about-section">
       <h2>About MobileShop</h2>
-      <img src="./assets/charger.jpeg" alt="" srcset="" />
+      <img class="team-photo" src="./assets/team.webp" alt="" srcset="" />
       <div class="about-text">
         <p>
           Welcome to MobileShop, your ultimate destination for all things tech
@@ -362,35 +229,57 @@
       <footer class="footer-distributed">
         <div class="footer-centered">
           <div class="footer-left">
-            <h3>Coding<span>Nepal</span></h3>
+            <h3>Mobile<span>Shop</span></h3>
+
             <p class="footer-links">
-              <a href="index.html" class="link-1">Home</a>
-              <a href="#">About</a>
-              <a href="#">Contact</a>
-              <a href="./loginRegister.html">Login/Register</a>
+              <a href="#" class="link-1">Home</a>
+
+              <a href="#">Blog</a>
+
+              <a href="#">Pricing</a>
+
+              <a href="./about.html">About</a>
+
+              <a href="#">Faq</a>
+
+              <a href="./contactUs.html">Contact</a>
             </p>
-            <p class="footer-company-name">CodingNepal © 2023</p>
+
+            <p class="footer-company-name">Company Name © 2015</p>
           </div>
+
           <div class="footer-center">
             <div>
               <i class="fa fa-map-marker"></i>
-              <p><span>Kathmandu, Nepal</span></p>
+              <p><span>444 S. Cedros Ave</span> Solana Beach, California</p>
             </div>
+
+            <div>
+              <i class="fa fa-phone"></i>
+              <p>+1.555.555.5555</p>
+            </div>
+
             <div>
               <i class="fa fa-envelope"></i>
               <p>
-                <a href="mailto:info@codingnepal.com">info@codingnepal.com</a>
+                <a href="mailto:support@company.com">support@company.com</a>
               </p>
             </div>
           </div>
+
           <div class="footer-right">
             <p class="footer-company-about">
-              <span>About CodingNepal</span>
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Enim
-              cumque animi, soluta id omnis sint nulla quidem nisi rerum neque
-              earum eius adipisci commodi. Vitae iusto doloribus sed ex
-              accusamus.
+              <span>About the company</span>
+              Lorem ipsum dolor sit amet, consectateur adispicing elit. Fusce
+              euismod convallis velit, eu auctor lacus vehicula sit amet.
             </p>
+
+            <div class="footer-icons">
+              <!-- <a href="#"><i class="fa fa-facebook"></i></a>
+        <a href="#"><i class="fa fa-twitter"></i></a>
+        <a href="#"><i class="fa fa-linkedin"></i></a>
+        <a href="#"><i class="fa fa-github"></i></a> -->
+            </div>
           </div>
         </div>
       </footer>
