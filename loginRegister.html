@@ -16,7 +16,7 @@
       }
 
       nav {
-        background-color: #1877f2;
+        background-color: #171c24;
         color: white;
         display: flex;
         justify-content: space-between;
@@ -103,6 +103,33 @@
       a:hover {
         text-decoration: underline;
       }
+      /* Footer styles */
+.FooterSection {
+  background-color: #333;
+  color: #fff;
+  padding: 20px 0;
+  text-align: center;
+}
+
+.footer-links a {
+  color: #fff;
+  margin: 0 10px;
+  text-decoration: none;
+}
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    /* Navigation styles */
+    nav {
+      background-color:  #171c24;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 20px;
+    }
     </style>
     <title>Login/Register Page</title>
   </head>
@@ -112,7 +139,7 @@
       <a href="home.html" class="logo">CodingNepal</a>
       <div class="nav-items">
         <a href="#">Home</a>
-        <a href="#">About</a>
+        <a href="./about.html">About</a>
         <a href="#">Contact</a>
         <a href="login.html" class="loginregister">Login/Register</a>
       </div>
@@ -154,6 +181,39 @@
         <a href="javascript:void(0);" onclick="toggleForms()">Login here</a>
       </p>
     </div>
+    <!-- Footer Section -->
+  <section class="FooterSection">
+    <footer class="footer-distributed">
+      <div class="footer-centered">
+        <div class="footer-left">
+          <h3>Coding<span>Nepal</span></h3>
+          <p class="footer-links">
+            <a href="index.html" class="link-1">Home</a>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+            <a href="./loginRegister.html">Login/Register</a>
+          </p>
+          <p class="footer-company-name">CodingNepal © 2023</p>
+        </div>
+        <div class="footer-center">
+          <div>
+            <i class="fa fa-map-marker"></i>
+            <p><span>Kathmandu, Nepal</span></p>
+          </div>
+          <div>
+            <i class="fa fa-envelope"></i>
+            <p><a href="mailto:info@codingnepal.com">info@codingnepal.com</a></p>
+          </div>
+        </div>
+        <div class="footer-right">
+          <p class="footer-company-about">
+            <span>About CodingNepal</span>
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Enim cumque animi, soluta id omnis sint nulla quidem nisi rerum neque earum eius adipisci commodi. Vitae iusto doloribus sed ex accusamus.
+          </p>
+        </div>
+      </div>
+    </footer>
+  </section>
 
     <script>
       function toggleForms() {
