@@ -17,21 +17,29 @@
 
       /* About Section styles */
       .about-section {
-        padding: 40px;
-        text-align: center;
-        background-color: #f9f9f9;
-      }
+  max-width: 1300px;
+  margin: 0 auto;
+  /* background-color: red; */
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
+  padding: 40px;
+  text-align: center;
+  background-color: #f9f9f9;
+}
 
-      .about-text {
-        max-width: 800px;
-        margin: 0 auto;
-        color: #555;
-      }
-      .team-photo {
-        width: 1200px;
-        height: 400px;
-        margin: 20px 0; /* Adjust margin as needed */
-      }
+.about-text {
+  max-width: 800px;
+  margin: 0 auto;
+  color: #555;
+}
+
+.team-photo {
+  max-width: 100%; /* Set the maximum width to 100% */
+  height: auto;
+  margin: 20px 0; /* Adjust margin as needed */
+}
       /* Reviews Section styles */
       .reviews-section {
         background-color: #f9f9f9;
@@ -68,37 +76,53 @@
       }
 
       .slide {
-        display: none;
-      }
+  display: none;
+}
 
-      /* Add styles for the slideshow controls */
-      .prev,
-      .next {
-        cursor: pointer;
-        position: absolute;
-        margin-top: 100px;
+/* Add styles for the slideshow controls */
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  width: 50px;
+  padding: 16px;
+  color: #fff;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  background-color: #333;
+}
 
-        margin-bottom: 100px;
-        width: 50px;
-        padding: 16px;
-        color: #fff;
-        font-weight: bold;
-        font-size: 18px;
-        transition: 0.6s ease;
-        border-radius: 0 3px 3px 0;
-        user-select: none;
-        background-color: #333;
-      }
+.prev {
+  left: 25%; /* Adjust this value for left positioning */
+  border-radius: 3px 0 0 3px;
+}
 
-      .prev {
-        left: 500px; /* Adjust this value to move the controls horizontally */
-        border-radius: 3px 0 0 3px;
-      }
+.next {
+  right: 25%; /* Adjust this value for right positioning */
+  border-radius: 0 3px 3px 0;
+}
 
-      .next {
-        right: 500px; /* Adjust this value to move the controls horizontally */
-        border-radius: 0 3px 3px 0;
-      }
+
+/* Media query for smaller screens */
+@media screen and (max-width: 768px) {
+  .prev,
+  .next {
+    width: 30px;
+    padding: 10px;
+    font-size: 14px;
+  }
+  
+  .prev {
+    left: 2%;
+  }
+  
+  .next {
+    right: 2%;
+  }
+}
 
       /* Animation */
       @keyframes fadeIn {
@@ -232,7 +256,7 @@
             <h3>Mobile<span>Shop</span></h3>
 
             <p class="footer-links">
-              <a href="#" class="link-1">Home</a>
+              <a href="./home.html" class="link-1">Home</a>
 
               <a href="#">Blog</a>
 
@@ -316,6 +340,30 @@
             changeSlide(1);
           }
         });
+        const menuBtn = document.querySelector(".menu-icon span");
+      const searchBtn = document.querySelector(".search-icon");
+      const cancelBtn = document.querySelector(".cancel-icon");
+      const items = document.querySelector(".nav-items");
+      const form = document.querySelector("form");
+      menuBtn.onclick = () => {
+        items.classList.add("active");
+        menuBtn.classList.add("hide");
+        searchBtn.classList.add("hide");
+        cancelBtn.classList.add("show");
+      };
+      cancelBtn.onclick = () => {
+        items.classList.remove("active");
+        menuBtn.classList.remove("hide");
+        searchBtn.classList.remove("hide");
+        cancelBtn.classList.remove("show");
+        form.classList.remove("active");
+        cancelBtn.style.color = "#ff3d00";
+      };
+      searchBtn.onclick = () => {
+        form.classList.add("active");
+        searchBtn.classList.add("hide");
+        cancelBtn.classList.add("show");
+      };
     </script>
   </body>
 </html>
