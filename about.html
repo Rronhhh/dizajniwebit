@@ -37,33 +37,60 @@
 
 .team-photo {
   max-width: 100%; /* Set the maximum width to 100% */
-  height: auto;
+  height: 100%;
   margin: 20px 0; /* Adjust margin as needed */
 }
+
       /* Reviews Section styles */
       .reviews-section {
-        background-color: #f9f9f9;
-        padding: 40px;
-        text-align: center;
-      }
+  background-color: #f9f9f9;
+  padding: 40px;
+  text-align: center;
+}
 
-      .review-container {
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        margin-top: 20px;
-      }
+.review-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+  height: 300px; /* Set a fixed height for the review container */
+}
 
-      .review-card {
-        background-color: #fff;
-        padding: 20px;
-        border-radius: 10px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        max-width: 300px;
-        text-align: left;
-        display: none;
-        animation: fadeIn 1s ease-in-out;
-      }
+.review-card {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  max-width: 300px;
+  text-align: left;
+  display: none;
+  animation: fadeIn 1s ease-in-out;
+}.reviews-section {
+  background-color: #f9f9f9;
+  padding: 40px;
+  text-align: center;
+}
+
+.review-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+  height: 300px; /* Set a fixed height for the review container */
+}
+
+.review-card {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  max-width: 300px;
+  text-align: left;
+  display: none;
+  animation: fadeIn 1s ease-in-out;
+}
 
       .review-card p {
         font-style: italic;
