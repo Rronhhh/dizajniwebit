@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="./css/styles.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
@@ -172,13 +172,14 @@
       </div>
       <div class="logo">CodingNepal</div>
       <div class="nav-items">
-        <li><a href="./home.html">Home</a></li>
-        <li><a href="./about.html">About</a></li>
+        <li><a href="./home.php">Home</a></li>
+        <li><a href="./products.php">Products</a></li>
+        <li><a href="./about.php">About</a></li>
         <!-- <li><a href="#">Blogs</a></li> -->
-        <li><a href="./contactUs.html">Contact</a></li>
+        <li><a href="./contactUs.php">Contact</a></li>
         <!-- <li><a href="#">Feedback</a></li> -->
         <li>
-          <a href="./loginRegister.html" class="loginregister"
+          <a href="./loginRegister.php" class="loginregister"
             >Login/Register</a
           >
         </li>
