@@ -1,268 +1,130 @@
 <?php
-session_start(); // Start the session at the beginning
-include './backend.php'; 
 include('config.php');
-$loginError = "";
-
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['login'])) {
+if (session_status() === PHP_SESSION_NONE) {
+  session_start();
+}
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = sanitizeInput($_POST['username']);
+    $email = sanitizeInput($_POST['email']);
     $password = sanitizeInput($_POST['password']);
+    $role = $_POST['role']; // Tani duhet të validohet në formë më të rreptë
 
-    // Validate and authenticate user
-    if (loginUser($username, $password)) {
-        if ($_SESSION['is_admin'] == 1) {
-            header('Location: adminDashboard.php');
-        } else {
-            header('Location: userDashboard.php');
-        }
+    if ($role != 'admin') {
+        $role = 'user';
+    }
+
+    if (registerUser($username, $password, $email, $role)) {
+        echo "Registration successful.";
+        header("Location: login.php");
         exit();
     } else {
-        $loginError = "Invalid username or password";
+        echo "Registration failed.";
     }
 }
-?>
-
-<!DOCTYPE html>
+?><!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./css/styles.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-    />
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        background-color: #f0f2f5;
-      }
 
-      .container {
-        background-color: #fff;
-        border-radius: 8px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        padding: 20px;
-        width: 300px;
-        margin: 20px auto;
-        text-align: center;
-      }
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./css/styles.css">
+  <link rel="stylesheet" href="./css/loginRegisterStyle.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <title>Login/Register Page</title>
+</head>
 
-      form {
-        display: flex;
-        flex-direction: column;
-      }
+<body>
+  <nav>
+    <div class="menu-icon">
+      <span class="fas fa-bars"></span>
+    </div>
+    <div class="logo">CodingNepal</div>
+    <div class="nav-items">
+      <li><a href="./home.php">Home</a></li>
+      <li><a href="./products.php">Products</a></li>
+      <li><a href="./about.php">About</a></li>
+      <li><a href="./contactUs.php">Contact</a></li>
+      <li><a href="./loginRegister.php" class="loginregister">Login/Register</a></li>
+    </div>
+    <div class="search-icon">
+      <span class="fas fa-search"></span>
+    </div>
+    <div class="cancel-icon">
+      <span class="fas fa-times"></span>
+    </div>
+  </nav>
 
-      h2 {
-        margin-bottom: 20px;
-        color: #1877f2;
-      }
+  <div class="container" id="loginContainer">
+  <form action="login.php" method="post">
+      <h2>Login</h2>
+     
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username" required />
 
-      label {
-        margin-bottom: 6px;
-      }
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required />
 
-      input {
-        padding: 10px;
-        margin-bottom: 12px;
-        border: 1px solid #ddd;
-        border-radius: 4px;
-      }
+      <button type="submit" name="login">Login</button>
+    </form>
+    <p>Don't have an account? <a href="javascript:void(0);" onclick="toggleForms()">Register here</a></p>
+  </div>
 
-      button {
-        background-color: #1877f2;
-        color: #fff;
-        padding: 10px;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-      }
-
-      button:hover {
-        background-color: #0e5a8a;
-      }
-
-      p {
-        margin-top: 16px;
-        text-align: center;
-        color: #555;
-      }
-
-      a {
-        color: #1877f2;
-        text-decoration: none;
-      }
-
-      a:hover {
-        text-decoration: underline;
-      }
-    </style>
-    <title>Login/Register Page</title>
-  </head>
-
-  <body>
-    <nav>
-      <div class="menu-icon">
-        <span class="fas fa-bars"></span>
-      </div>
-      <div class="logo">CodingNepal</div>
-      <div class="nav-items">
-        <li><a href="./home.php">Home</a></li>
-        <li><a href="./products.php">Products</a></li>
-        <li><a href="./about.php">About</a></li>
-        <!-- <li><a href="#">Blogs</a></li> -->
-        <li><a href="./contactUs.php">Contact</a></li>
-        <!-- <li><a href="#">Feedback</a></li> -->
-        <li>
-          <a href="./loginRegister.php" class="loginregister"
-            >Login/Register</a
-          >
-        </li>
-      </div>
-      <div class="search-icon">
-        <span class="fas fa-search"></span>
-      </div>
-      <div class="cancel-icon">
-        <span class="fas fa-times"></span>
-      </div>
-    </nav>
-
-    <div class="container" id="loginContainer">
-      <form id="loginForm" onsubmit="validateLogin(); return false;">
-        <h2>Login</h2>
+  <div class="container" id="registerContainer" style="display: none">
+   <form action="register.php" method="post">
         <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required />
-
+        <input type="text" id="username" name="username" required><br><br>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br><br>
         <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required />
-
-        <button type="submit">Login</button>
-      </form>
-      <p>
-        Don't have an account?
-        <a href="javascript:void(0);" onclick="toggleForms()">Register here</a>
-      </p>
-    </div>
-
-    <div class="container" id="registerContainer" style="display: none">
-      <form id="registerForm" onsubmit="validateRegister(); return false;">
-        <h2>Create an Account</h2>
-        <label for="regUsername">Username:</label>
-        <input type="text" id="regUsername" name="regUsername" required />
-
-        <label for="regEmail">Email:</label>
-        <input type="email" id="regEmail" name="regEmail" required />
-
-        <label for="regPassword">Password:</label>
-        <input type="password" id="regPassword" name="regPassword" required />
-
+        <input type="password" id="password" name="password" required><br><br>
+        <label for="role">Role:</label>
+        <select id="role" name="role">
+            <option value="admin">Admin</option>
+            <option value="user">User</option>
+        </select><br><br>
         <button type="submit">Register</button>
-      </form>
-      <p>
-        Already have an account?
-        <a href="javascript:void(0);" onclick="toggleForms()">Login here</a>
-      </p>
-    </div>
-    <!-- Footer Section -->
-    <section class="FooterSection">
-      <footer class="footer-distributed">
-        <div class="footer-centered">
-          <div class="footer-left">
-            <h3>Mobile<span>Shop</span></h3>
+    </form>
+    <p>Already have an account? <a href="javascript:void(0);" onclick="toggleForms()">Login here</a></p>
+  </div>
 
-            <p class="footer-links">
-              <a href="#" class="link-1">Home</a>
-
-              <a href="#">Blog</a>
-
-              <a href="#">Pricing</a>
-
-              <a href="./about.php">About</a>
-
-              <a href="#">Faq</a>
-
-              <a href="./contactUs.php">Contact</a>
-            </p>
-
-            <p class="footer-company-name">Company Name © 2015</p>
-          </div>
-
-          <div class="footer-center">
-            <div>
-              <i class="fa fa-map-marker"></i>
-              <p><span>444 S. Cedros Ave</span> Solana Beach, California</p>
-            </div>
-
-            <div>
-              <i class="fa fa-phone"></i>
-              <p>+1.555.555.5555</p>
-            </div>
-
-            <div>
-              <i class="fa fa-envelope"></i>
-              <p>
-                <a href="mailto:support@company.com">support@company.com</a>
-              </p>
-            </div>
-          </div>
-
-          <div class="footer-right">
-            <p class="footer-company-about">
-              <span>About the company</span>
-              Lorem ipsum dolor sit amet, consectateur adispicing elit. Fusce
-              euismod convallis velit, eu auctor lacus vehicula sit amet.
-            </p>
-
-            <div class="footer-icons">
-              <!-- <a href="#"><i class="fa fa-facebook"></i></a>
-        <a href="#"><i class="fa fa-twitter"></i></a>
-        <a href="#"><i class="fa fa-linkedin"></i></a>
-        <a href="#"><i class="fa fa-github"></i></a> -->
-            </div>
-          </div>
-        </div>
-      </footer>
-    </section>
-
-    <script>
-      function toggleForms() {
-        var loginContainer = document.getElementById("loginContainer");
-        var registerContainer = document.getElementById("registerContainer");
-
-        // Toggle the display property of the login and register containers
-        if (loginContainer.style.display === "none") {
-          loginContainer.style.display = "block";
-          registerContainer.style.display = "none";
-        } else {
-          loginContainer.style.display = "none";
-          registerContainer.style.display = "block";
-        }
+ 
+  <script>
+    function toggleForms() {
+      var loginContainer = document.getElementById("loginContainer");
+      var registerContainer = document.getElementById("registerContainer");
+      if (loginContainer.style.display === "none") {
+        loginContainer.style.display = "block";
+        registerContainer.style.display = "none";
+      } else {
+        loginContainer.style.display = "none";
+        registerContainer.style.display = "block";
       }
-      const menuBtn = document.querySelector(".menu-icon span");
-      const searchBtn = document.querySelector(".search-icon");
-      const cancelBtn = document.querySelector(".cancel-icon");
-      const items = document.querySelector(".nav-items");
-      const form = document.querySelector("form");
-      menuBtn.onclick = () => {
-        items.classList.add("active");
-        menuBtn.classList.add("hide");
-        searchBtn.classList.add("hide");
-        cancelBtn.classList.add("show");
-      };
-      cancelBtn.onclick = () => {
-        items.classList.remove("active");
-        menuBtn.classList.remove("hide");
-        searchBtn.classList.remove("hide");
-        cancelBtn.classList.remove("show");
-        form.classList.remove("active");
-        cancelBtn.style.color = "#ff3d00";
-      };
-      searchBtn.onclick = () => {
-        form.classList.add("active");
-        searchBtn.classList.add("hide");
-        cancelBtn.classList.add("show");
-      };
-    </script>
-  </body>
+    }
+    const menuBtn = document.querySelector(".menu-icon span");
+    const searchBtn = document.querySelector(".search-icon");
+    const cancelBtn = document.querySelector(".cancel-icon");
+    const items = document.querySelector(".nav-items");
+    const form = document.querySelector("form");
+    menuBtn.onclick = () => {
+      items.classList.add("active");
+      menuBtn.classList.add("hide");
+      searchBtn.classList.add("hide");
+      cancelBtn.classList.add("show");
+    };
+    cancelBtn.onclick = () => {
+      items.classList.remove("active");
+      menuBtn.classList.remove("hide");
+      searchBtn.classList.remove("hide");
+      cancelBtn.classList.remove("show");
+      form.classList.remove("active");
+      cancelBtn.style.color = "#ff3d00";
+    };
+    searchBtn.onclick = () => {
+      form.classList.add("active");
+      searchBtn.classList.add("hide");
+      cancelBtn.classList.add("show");
+    };
+  </script>
+</body>
+
 </html>
