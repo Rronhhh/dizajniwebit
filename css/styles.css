@@ -7,7 +7,7 @@
   font-family: "Montserrat", sans-serif;
 }
 body {
-  /* background: #f2f2f2; */
+  background: #f2f2f2;
 }
 nav {
   background: #171c24;
@@ -517,6 +517,11 @@ nav li a.loginregister {
     font-size: 30px;
     margin-bottom: 50px;
   }
+}
+
+.FooterSection {
+  margin-top: auto;
+  
 }
 
 .footer-distributed {
