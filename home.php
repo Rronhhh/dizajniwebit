@@ -16,7 +16,6 @@ function updateProductStatistics($conn, $id, $action)
     // Handle the case where the product doesn't exist
   }
 }
-
 function displayProducts($products, $category)
 {
   echo "<h2>Top $category products</h2>";
