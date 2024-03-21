@@ -1,5 +1,5 @@
 <?php
-include('config.php');
+include ('config.php');
 
 function updateProductStatistics($conn, $id, $action)
 {
@@ -13,17 +13,17 @@ function updateProductStatistics($conn, $id, $action)
     $updateSql = "UPDATE products SET $action = $count WHERE id = $id";
     $conn->query($updateSql);
   } else {
-    // Handle the case where the product doesn't exist
+
   }
 }
 function displayProducts($products, $category)
 {
   echo "<h2>Top $category products</h2>";
 
-  if (!empty($products)) {
+  if (!empty ($products)) {
     echo "<div class='products'>";
     foreach ($products as $product) {
-      $imageSrc = $product['image_url']; // Use the image URL from the database
+      $imageSrc = $product['image_url'];
       echo "<div class='product-card'>";
       echo "<img class='product-image' src='$imageSrc' alt='{$product['product_name']}'>";
       echo "<div class='product-details'>";
@@ -39,12 +39,12 @@ function displayProducts($products, $category)
 }
 function getTopProducts($conn, $category)
 {
-  $columnName = "`$category`";  // Enclose the category in backticks
+  $columnName = "`$category`";
   $sql = "SELECT * FROM products ORDER BY $columnName DESC LIMIT 5";
   $result = $conn->query($sql);
 
   if (!$result) {
-    // Query failed, display error details
+
     echo "Error: " . $conn->error;
     return [];
   }
@@ -76,31 +76,31 @@ $mostLikedProducts = getTopProducts($conn, 'like_count');
 </head>
 
 <body>
- 
-    <nav>
-      <div class="menu-icon">
-        <span class="fas fa-bars"></span>
-      </div>
-      <div class="logo">CodingNepal</div>
-      <div class="nav-items">
-        <li><a href="./home.php">Home</a></li>
-        <li><a href="./products.php">Products</a></li>
-        <li><a href="./about.php">About</a></li>
-        <!-- <li><a href="#">Blogs</a></li> -->
-        <li><a href="./contactUs.php">Contact</a></li>
-        <!-- <li><a href="#">Feedback</a></li> -->
-        <li>
-          <a href="./loginRegister.php" class="loginregister">Login/Register</a>
-        </li>
-      </div>
-      <div class="search-icon">
-        <span class="fas fa-search"></span>
-      </div>
-      <div class="cancel-icon">
-        <span class="fas fa-times"></span>
-      </div>
-    </nav>
- 
+
+  <nav>
+    <div class="menu-icon">
+      <span class="fas fa-bars"></span>
+    </div>
+    <div class="logo">CodingNepal</div>
+    <div class="nav-items">
+      <li><a href="./home.php">Home</a></li>
+      <li><a href="./products.php">Products</a></li>
+      <li><a href="./about.php">About</a></li>
+
+      <li><a href="./contactUs.php">Contact</a></li>
+
+      <li>
+        <a href="./loginRegister.php" class="loginregister">Login/Register</a>
+      </li>
+    </div>
+    <div class="search-icon">
+      <span class="fas fa-search"></span>
+    </div>
+    <div class="cancel-icon">
+      <span class="fas fa-times"></span>
+    </div>
+  </nav>
+
 
   <section class="ProductsSection">
     <h1>Our products</h1>
@@ -113,7 +113,7 @@ $mostLikedProducts = getTopProducts($conn, 'like_count');
   </section>
 
   <section class="FooterSection">
-    <!-- Your existing footer code -->
+
   </section>
 
   <script>
@@ -142,9 +142,9 @@ $mostLikedProducts = getTopProducts($conn, 'like_count');
       cancelBtn.classList.add("show");
     };
     function redirectToProduct(productId) {
-    var newURL = 'http://localhost/dizajniwebit/product.php?id=' + productId;
-    window.location.href = newURL;
-  }
+      var newURL = 'http://localhost/dizajniwebit/product.php?id=' + productId;
+      window.location.href = newURL;
+    }
   </script>
 </body>
 
