@@ -1,5 +1,5 @@
 <?php
-include('config.php');
+include ('config.php');
 
 function updateProductStatistics($conn, $id, $action)
 {
@@ -13,18 +13,17 @@ function updateProductStatistics($conn, $id, $action)
     $updateSql = "UPDATE products SET $action = $count WHERE id = $id";
     $conn->query($updateSql);
   } else {
-    // Handle the case where the product doesn't exist
+   
   }
 }
-
 function displayProducts($products, $category)
 {
   echo "<h2>Top $category products</h2>";
 
-  if (!empty($products)) {
+  if (!empty ($products)) {
     echo "<div class='products'>";
     foreach ($products as $product) {
-      $imageSrc = $product['image_url']; // Use the image URL from the database
+      $imageSrc = $product['image_url'];
       echo "<div class='product-card'>";
       echo "<img class='product-image' src='$imageSrc' alt='{$product['product_name']}'>";
       echo "<div class='product-details'>";
@@ -40,12 +39,12 @@ function displayProducts($products, $category)
 }
 function getTopProducts($conn, $category)
 {
-  $columnName = "`$category`";  // Enclose the category in backticks
+  $columnName = "`$category`"; 
   $sql = "SELECT * FROM products ORDER BY $columnName DESC LIMIT 5";
   $result = $conn->query($sql);
 
   if (!$result) {
-    // Query failed, display error details
+  
     echo "Error: " . $conn->error;
     return [];
   }
@@ -59,19 +58,17 @@ function getTopProducts($conn, $category)
 }
 $mostBoughtProducts = getTopProducts($conn, 'buy_count');
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-  // Handle form submission
-  $name = isset($_POST['name']) ? $_POST['name'] : '';
-  $email = isset($_POST['email']) ? $_POST['email'] : '';
 
-  // Here, you can perform actions with the form data, like saving to a database.
+  $name = isset ($_POST['name']) ? $_POST['name'] : '';
+  $email = isset ($_POST['email']) ? $_POST['email'] : '';
 
-  // Send a response back to the frontend
+
   $response = ['status' => 'success', 'message' => 'Form submitted successfully'];
   echo json_encode($response);
   exit;
 
 }
-if(isset($_SESSION['id']) && isset($_SESSION['role']) && $_SESSION['role'] == 'admin') {
+if (isset ($_SESSION['id']) && isset ($_SESSION['role']) && $_SESSION['role'] == 'admin') {
   $role = true;
 } else {
   $role = false;
@@ -98,12 +95,12 @@ if(isset($_SESSION['id']) && isset($_SESSION['role']) && $_SESSION['role'] == 'a
       <li><a href="./home.php">Home</a></li>
       <li><a href="./products.php">Products</a></li>
       <li><a href="./about.php">About</a></li>
-      
-      <?php if($role): ?>
+
+      <?php if ($role): ?>
         <li><a href="./products.php">Shto Produkte</a></li>
-        <?php endif; ?>
+      <?php endif; ?>
       <li><a href="./contactUs.php">Contact</a></li>
-      <!-- <li><a href="#">Feedback</a></li> -->
+
       <li>
         <a href="./loginRegister.php" class="loginregister">Login/Register</a>
       </li>
@@ -131,15 +128,15 @@ if(isset($_SESSION['id']) && isset($_SESSION['role']) && $_SESSION['role'] == 'a
   <section class="ProductsSection">
     <h1>Our on <span>sale</span> products</h1>
     <div class="products">
-    <div class="products">
-   
-      <?php displayProducts($mostBoughtProducts, 'most bought'); ?>
-    
+      <div class="products">
+
+        <?php displayProducts($mostBoughtProducts, 'most bought'); ?>
+
+      </div>
+
+
     </div>
 
-      
-      </div>
-   
     <button class="show-all-button" onclick="window.location.href='products.php'">
       Show All Products
     </button>
@@ -260,10 +257,7 @@ if(isset($_SESSION['id']) && isset($_SESSION['role']) && $_SESSION['role'] == 'a
           </p>
 
           <div class="footer-icons">
-            <!-- <a href="#"><i class="fa fa-facebook"></i></a>
-					<a href="#"><i class="fa fa-twitter"></i></a>
-					<a href="#"><i class="fa fa-linkedin"></i></a>
-					<a href="#"><i class="fa fa-github"></i></a> -->
+
           </div>
         </div>
       </div>
@@ -295,9 +289,9 @@ if(isset($_SESSION['id']) && isset($_SESSION['role']) && $_SESSION['role'] == 'a
       cancelBtn.classList.add("show");
     };
     function redirectToProduct(productId) {
-    var newURL = 'http://localhost/dizajniwebit/product.php?id=' + productId;
-    window.location.href = newURL;
-  }
+      var newURL = 'http://localhost/dizajniwebit/product.php?id=' + productId;
+      window.location.href = newURL;
+    }
   </script>
 </body>
 
